@@ -25,7 +25,7 @@ Restart=on-failure
 RemainAfterExit=true
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=local-fs.target
 EOF
 
 # Create chmod_local_ssd service
@@ -46,6 +46,8 @@ RemainAfterExit=true
 WantedBy=multi-user.target
 EOF
 
+systemctl enable setup_local_ssd
+systemctl enable chmod_local_ssd
 
 # Configure /etc/fstab
 SSD_PATH_PREFIX="/dev/disk/by-id/google-local-nvme-ssd-"
